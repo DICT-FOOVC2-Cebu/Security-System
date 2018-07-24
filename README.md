@@ -19,3 +19,5 @@ Requirements:
 		note: "e" varies depending on the drive letter of your sd card.
 9. Safely remove the device...
 "Congrats you successfully intalled the Raspbian OS"
+
+*to view the physical connection of the door sensor and cables, please refer to the folder "Security system physical connection"
