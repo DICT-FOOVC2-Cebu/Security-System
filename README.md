@@ -84,72 +84,72 @@ INSTALLING OPENCV 3.3.0 AND PYTHON 3 ON RASPBERRY PI 3
 
 The first thing you should do is expand your filesystem to include all available space on your micro-SD card:
 
-`$ sudo raspi-config`
+$ sudo raspi-config
 
 Select the advanced options then select expand file system and then select the Finish Button!
 
 Next is enable your camera.
 
-`$ sudo raspi-config`
+$ sudo raspi-config
 Select the Localisation Options and then select camera and enable then select finish button!
 Next Reboot your raspberry pi
 
-`$ sudo reboot`
+$ sudo reboot
 Next free up some space by deleting some applications inside the raspberry pi.
 
 
-`$ sudo apt-get purge wolfram-engine`
-`$ sudo apt-get purge libreoffice*`
-`$ sudo apt-get purge scratch`
-`$ sudo apt-get purge scratch2`
-`$ sudo apt-get purge minecraft`
-`$ sudo apt-get purge sonic-pi`
-`$ sudo apt-get purge greenfoot`
-`$ sudo apt-get clean`
-`$ sudo apt-get auto remove`
+$ sudo apt-get purge wolfram-engine
+$ sudo apt-get purge libreoffice*
+$ sudo apt-get purge scratch
+$ sudo apt-get purge scratch2
+$ sudo apt-get purge minecraft
+$ sudo apt-get purge sonic-pi
+$ sudo apt-get purge greenfoot
+$ sudo apt-get clean
+$ sudo apt-get auto remove
 
 Next Step is to update and upgrade any existing packages
-`$ sudo apt-get update && sudo apt-get upgrade`
+$ sudo apt-get update && sudo apt-get upgrade
 
 Install some developer tools, including CMake, which helps us configure the OpenCV build process:
-`$ sudo apt-get install build-essential cmake pkg-config`
+$ sudo apt-get install build-essential cmake pkg-config
 
 Install some image I/O packages that allow us to load various image file formats from disk. Examples of such file formats include JPEG, PNG, TIFF, etc.:
-`$ sudo apt-get install libjpeg-dev libtiffs-dev libjasper-dev libpng12-dev`
+$ sudo apt-get install libjpeg-dev libtiffs-dev libjasper-dev libpng12-dev
 
 Install libraries that allow us to read various video file format from disk as well as work directly with video streams.
-`$ sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev`
-`$ sudo apt-get install libxvidcore-dev libx264-dev`
+$ sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev
+$ sudo apt-get install libxvidcore-dev libx264-dev
 
 Install GTK development library
-`$ sudo apt-get install libgtk.0-dev libgtk-3-dev`
+$ sudo apt-get install libgtk.0-dev libgtk-3-dev
 
 To optimized further the various operation inside opencv we need to install few extra dependencies.
-`$ sudo apt-get install libatlas-base-dev gfortran`
+$ sudo apt-get install libatlas-base-dev gfortran
 
 Install Python 2.7 and Python 3 header files so we can compile opencv with python bindings.
-`$ sudo apt-get install python2.7-dev python3-dev`
+$ sudo apt-get install python2.7-dev python3-dev
 
 Next Step is grab the 3.3.0 archive of opencv from official opencv repository.
-`$ cd ~`
-`$ wget -0 opencv.zip https://github.com/Itseez/opencv/archive/3.3.0.zip`
-`$ unzip opencv.zip`
+$ cd ~
+$ wget -0 opencv.zip https://github.com/Itseez/opencv/archive/3.3.0.zip
+$ unzip opencv.zip
 
 To have access to features such SIFT and SUFT we need grab the opencv_contrib repository.
-`$ wget -0 opencv_contrib.zip https://github.com/Itseez/opencv_contrib/archive/3.3.0`
-`$ unzip opencv_contrib.zip`
+$ wget -0 opencv_contrib.zip https://github.com/Itseez/opencv_contrib/archive/3.3.0
+$ unzip opencv_contrib.zip
 
 Install PIP python package manager
-`$ wget https://bootstrap.pypa.io/get-pip.py`
-`$ sudo python get-pip.py`
-`$ sudo python3 get-pip.py`
+$ wget https://bootstrap.pypa.io/get-pip.py
+$ sudo python get-pip.py
+$ sudo python3 get-pip.py
 
 Next Install virtualenv and virtualenwrapper. This virtual environment is a special  tool used to keep the dependencies required by different projects in separate places by creating isolated, independent python environments for each of them.
-`$ sudo pip install virtualen virtualenwrapper`
-`$ sudo rm -rf ~/.cache/pip`
+$ sudo pip install virtualen virtualenwrapper
+$ sudo rm -rf ~/.cache/pip
 
 After the installation open ~/.profile
-`$ nano ~/.profile`
+$ nano ~/.profile
 and add this lines to the bottom of the file.
 #virtualenv and virtualenwrapper
 export WORKON_HOME=$HOME/.virtualenvs
@@ -157,27 +157,27 @@ export VIRTUALENWRAPPER_PYTHON=/usr/bin/python3
 source /usr/local/bin/virtualenwrapper.sh
 
 Next reload it to make sure the changes take affect.
-`$ source ~/.profile`
+$ source ~/.profile
 
 Let us now create python virtual environment that we will use for computer vision development.
-`$ mkvirtualenv cv -p python3`
+$ mkvirtualenv cv -p python3
 
 After the creation of the python virtual environment you should see the text (cv) preceding your prompt., just like the example below:
 (cv) pi@raspberrypi: ~ $
 
 Everytime you open a new terminal always run the ff. line command to ensure that you are working in the virtual environment.
-`$ source ~/.profile`
-`$ workoncv`
+$ source ~/.profile
+$ workoncv
 
 Next Install the python dependency NumPy, Python package used for numerical processing
-`$ pip install numpy`
+$ pip install numpy
 
 Double check that you are on the cv virtual environment.
 Afterwards, we can now setup our build using cmake.
-`$ cd ~/opencv-3.3.0`
-`$ mkdir build`	
-`$ cd build`
-`$ cmake -D CMAKE_BUILD_TYPE=RELEASE \`
+$ cd ~/opencv-3.3.0
+$ mkdir build	
+$ cd build
+$ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 -D CMAKE_INSTALL_PREFIX=usr/LOCAL \
 -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib-3.3.0/module \
 -D ENABLE_NEON=ON \
@@ -188,7 +188,7 @@ Afterwards, we can now setup our build using cmake.
 
 Before you start the compile project increase your swap face size to enable opencv to compile with all 4 cores to the raspberry pi.
 
-`$ sudo nano /etc/dphys-swapfile`
+$ sudo nano /etc/dphys-swapfile
 Then edit your CONF_SWAPSIZE variable.
 #set size to absolute value, leaving empty (default) then uses computed value
 #you most likely don't want this, unless you have a special disk situation
@@ -196,37 +196,37 @@ Then edit your CONF_SWAPSIZE variable.
 CONF_SWAPSIZE=2048
 
 Activate the new swap space by restarting the swap service.
-`$ sudo /etc/init.d/dphys-swapfile stop`
-`$ sudo /etc/init.d/dphys-swapfile start`	
+$ sudo /etc/init.d/dphys-swapfile stop
+$ sudo /etc/init.d/dphys-swapfile start
 
 
 Compile opencv 
-`$ make -j4` 
+$ make -j4 
 if there is an error just run: 
-`$ make clean`
-`$ make -j4`
+$ make clean
+$ make -j4
 
 if there is no error, install opencv 3 on your raspberry pi.
-`$ sudo make install`
-`$sudo ldconfig`
+$ sudo make install
+$sudo ldconfig
 
 Next issue the ff. commands to sym-link the cv2.so bindings into your cv environment.
-`$ cd /usr/local/lib/python3.5/site-packages/`
-`$ sudo mv cv2.cpython-35m-arm-linux-gnueabihf.so cv2.so`
-`$ cd ~/.virtualens/cv/lib/python3.5/site-packages/`
-`$ ln -s /usr/local/lib/python3.5/site-packages/cv2.so cv2.so`
+$ cd /usr/local/lib/python3.5/site-packages/
+$ sudo mv cv2.cpython-35m-arm-linux-gnueabihf.so cv2.so
+$ cd ~/.virtualens/cv/lib/python3.5/site-packages/
+$ ln -s /usr/local/lib/python3.5/site-packages/cv2.so cv2.so
 
 Open up a new terminal execute the source and work on commands and then finally attempt to import the python + opencv bindings.
-`$ source ~/.profile`
-`$ workon cv`
-`$ pyhton`
+$ source ~/.profile
+$ workon cv
+$ pyhton
 >>> import cv2
 >>> cv2.__version__
 '3.3.0'
 >>>
 
 And now change the swap size back!
-`$ sudo nano /etc/dphys-swapfile`
+$ sudo nano /etc/dphys-swapfile
 
 Then edit the CONF_SWAPSIZE
 #set size to absolute value, leaving empty (default) then uses computed value
@@ -234,9 +234,89 @@ Then edit the CONF_SWAPSIZE
 CONF_SWAPSIZE=100
 #CONF_SWAPSIZE=2048
 
-`$ sudo /etc/init.d/dphys-swapfile stop`
-`$ sudo /etc/init.d/dphys-swapfile start`
+$ sudo /etc/init.d/dphys-swapfile stop
+$ sudo /etc/init.d/dphys-swapfile start
 
 Finally, you have successfully installed opencv 3 and python on your raspberry pi.
 
+# Step 5 - BUILDING A FACE RECOGNITION DATASET
 
+	This is a preparatory step before training your raspberry pi to detect and recognize individual faces.
+	Here, a dataset of faces of oneself is gathered in order for the raspberry pi to compare the actual live face from the gathered dataset of faces for recognition. The raspberry pi camera is used to capture faces of oneself. These images are then collected and compiled in one folder._
+	The following are the steps on how to build a face recognition dataset:
+	1. Enter the raspberry pi command prompt environmet
+	2. Type: `pip install --upgrade imutils`
+	   *it should look like these:*
+			```bash
+			$ pip install --upgrade imutils 
+			```
+		Note:  Be sure that the OpenCV is installed
+	3. In the raspberry pi terminal, type: `mkdir dataset`
+	   *this makes a directory for the dataset*
+	4. Type: `mkdir dataset/<name of the person's face>`
+	   *this command names a subdirectory under dataset directory which all of the images/faces were contained.*
+		ex: 
+		```bash
+		$ mkdir dataset/john
+		```
+	5. Open the `build_face_dataset.py` from the repository
+	   *To understand further eachline of code in this program, visit in this* [link](https://www.pyimagesearch.com/2018/06/11/how-to-build-a-custom-face-recognition-dataset/)
+		*Note: Some codes are removed and changed.*
+	6. Execute the following in the raspberry pi command prompt:
+		```bash
+		$ python build_face_dataset.py --cascade haarcascade_frontalface_default.xml \
+		    --output dataset/adrian
+		    ```
+	   *After clicking enter, the following shows up:*
+		`[INFO] starting video stream...`
+		`[INFO] 6 face images stored`
+		`[INFO] cleaning up...`
+		
+# Step 6 - Face Recognition
+	*This the part where the raspberry pi is trained to detect and recognize faces. Deep neural network is used to compute a 128-d vector (i.e. a list of 128 floating point values) to quantify each face in the dataset.
+		Note: Make sure that OpenCV is installed and you have gathered dataset of faces.*
+
+	The following are the steps to configure your raspberry pi for face recognition:
+	1. In the raspberry pi command prompt, install dlib toolkit by typing: 
+		`workon <your env name> # optional`
+		`pip install dlib`
+	  *it should look like this:*
+		```bash
+		$ workon <your env name> # optional
+		$ pip install dlib
+		```
+	then press enter
+	2. Install `face_recognition module` by typing:
+		`workon <your env name> # optional`
+		`pip install face_recognition`
+	  *it should look like this:*
+	    ```bash
+		  $ workon <your env name> # optional
+		  $ pip install face_recognition
+		  ```
+	then press enter
+	3. Install `imutils package` by typing:
+		`workon <your env name> # optional`
+		`pip install imutils`
+	  *it should look like this:*
+	  	```bash
+		$ workon <your env name> # optional
+		$ pip install imutils
+		```
+	then press enter
+	4. Open up `encode_faces.py`
+	  *to understand further the lines of codes, refer to the following* [link](https://www.pyimagesearch.com/2018/06/25/raspberry-pi-face-recognition/)
+	5. Open `pi_face_recognition.py`
+	  *to understand further the lines of codes, refer to the following* [link](https://www.pyimagesearch.com/2018/06/25/raspberry-pi-face-recognition/)
+	6. Open up raspberry Pi terminal and execute/type the following:
+		`python pi_face_recognition.py --cascade haarcascade_frontalface_default.xml \
+	--encodings encodings.pickle`
+	  *it should look like this:
+	  	```bash
+		$ python pi_face_recognition.py --cascade haarcascade_frontalface_default.xml \
+			--encodings encodings.pickle
+		[INFO] loading encodings + face detector...
+		[INFO] starting video stream...
+		[INFO] elasped time: 20.78
+		[INFO] approx. FPS: 1.21
+		```
