@@ -241,13 +241,13 @@ Finally, you have successfully installed opencv 3 and python on your raspberry p
 
 # Step 5 - BUILDING A FACE RECOGNITION DATASET
 
-	This is a preparatory step before training your raspberry pi to detect and recognize individual faces.
+_This is a preparatory step before training your raspberry pi to detect and recognize individual faces.
 	Here, a dataset of faces of oneself is gathered in order for the raspberry pi to compare the actual live face from the gathered dataset of faces for recognition. The raspberry pi camera is used to capture faces of oneself. These images are then collected and compiled in one folder._
 	The following are the steps on how to build a face recognition dataset:
 	1. Enter the raspberry pi command prompt environmet
 	2. Type: `pip install --upgrade imutils`
 	   *it should look like these:*
-			```bash
+			```
 			$ pip install --upgrade imutils 
 			```
 		Note:  Be sure that the OpenCV is installed
@@ -256,14 +256,14 @@ Finally, you have successfully installed opencv 3 and python on your raspberry p
 	4. Type: `mkdir dataset/<name of the person's face>`
 	   *this command names a subdirectory under dataset directory which all of the images/faces were contained.*
 		ex: 
-		```bash
+		```
 		$ mkdir dataset/john
 		```
 	5. Open the `build_face_dataset.py` from the repository
 	   *To understand further eachline of code in this program, visit in this* [link](https://www.pyimagesearch.com/2018/06/11/how-to-build-a-custom-face-recognition-dataset/)
 		*Note: Some codes are removed and changed.*
 	6. Execute the following in the raspberry pi command prompt:
-		```bash
+		```
 		$ python build_face_dataset.py --cascade haarcascade_frontalface_default.xml \
 		    --output dataset/adrian
 		    ```
@@ -273,15 +273,15 @@ Finally, you have successfully installed opencv 3 and python on your raspberry p
 		`[INFO] cleaning up...`
 		
 # Step 6 - Face Recognition
-	*This the part where the raspberry pi is trained to detect and recognize faces. Deep neural network is used to compute a 128-d vector (i.e. a list of 128 floating point values) to quantify each face in the dataset.
+*This the part where the raspberry pi is trained to detect and recognize faces. Deep neural network is used to compute a 128-d vector (i.e. a list of 128 floating point values) to quantify each face in the dataset.
 		Note: Make sure that OpenCV is installed and you have gathered dataset of faces.*
 
-	The following are the steps to configure your raspberry pi for face recognition:
+The following are the steps to configure your raspberry pi for face recognition:
 	1. In the raspberry pi command prompt, install dlib toolkit by typing: 
 		`workon <your env name> # optional`
 		`pip install dlib`
 	  *it should look like this:*
-		```bash
+		```
 		$ workon <your env name> # optional
 		$ pip install dlib
 		```
@@ -290,7 +290,7 @@ Finally, you have successfully installed opencv 3 and python on your raspberry p
 		`workon <your env name> # optional`
 		`pip install face_recognition`
 	  *it should look like this:*
-	    ```bash
+	    ```
 		  $ workon <your env name> # optional
 		  $ pip install face_recognition
 		  ```
@@ -299,7 +299,7 @@ Finally, you have successfully installed opencv 3 and python on your raspberry p
 		`workon <your env name> # optional`
 		`pip install imutils`
 	  *it should look like this:*
-	  	```bash
+	  	```
 		$ workon <your env name> # optional
 		$ pip install imutils
 		```
@@ -312,7 +312,7 @@ Finally, you have successfully installed opencv 3 and python on your raspberry p
 		`python pi_face_recognition.py --cascade haarcascade_frontalface_default.xml \
 	--encodings encodings.pickle`
 	  *it should look like this:
-	  	```bash
+	  	```
 		$ python pi_face_recognition.py --cascade haarcascade_frontalface_default.xml \
 			--encodings encodings.pickle
 		[INFO] loading encodings + face detector...
