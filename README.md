@@ -1,9 +1,9 @@
 # STEP 1 - Installing Rasbian OS
 
 Requirements:	
-	At least 16 GB sd card
-	Rasbian Stretch OS
-	Disk Imager or you can use CMD
+	-At least 16 GB sd card
+	-Rasbian Stretch OS
+	-Disk Imager or you can use CMD
 	
 1. Go to raspberrypi.org to download the OS
 2. Donwload Disk Imager from this site or any other will do
@@ -14,8 +14,8 @@ Requirements:
 6. Browse the Image file of your rasbian OS to select.
 7. Click write and wait until done...
 8. To enable ssh go to command prompt and type:
-	`echo.>e:/ssh` and press enter
-		note: "e" varies depending on the drive letter of your sd card.
+	`echo.>e:/ssh`
+	note: "e" varies depending on the drive letter of your sd card.
 9. Safely remove the device...
 "Congrats you successfully intalled the Raspbian OS"
 
@@ -23,52 +23,49 @@ Requirements:
 
 ** GETTING STARTED
 	Requirements available:	
-		Monitor
-		Keyboard
-		Mouse	
-		Rasberry Pi 3 Model B
-		32gb SD card
-		Connectors (HDMI or VGA as needed)
-		Power supply with output 5v 2A
-//Insert the sd card on the raspberry pi  and setup the connections as if treating the pi like a computer with monitor, keyboard and mouse.
-
-//Connect to the internet through WI-FI.
-
-//Now let's setup the rasberry pi environment:
+		-Monitor
+		-Keyboard
+		-Mouse	
+		-Rasberry Pi 3 Model B
+		-32gb SD card
+		-Connectors (HDMI or VGA as needed)
+		-Power supply with output 5v 2A
+1. Insert the sd card on the raspberry pi  and setup the connections as if treating the pi like a computer with monitor, keyboard and 	mouse.
+2.Connect to the internet through WI-FI.
+3.Now let's setup the rasberry pi environment:
 	- for the keyboard goto applications menu > preferences > raspberry pi configuration > localization > set keyboard
 		then set the layout to US
 	- under interfaces enable the following: Camera, SSH, VNC, SERIAL PORT, SERIAL CONSOLE
 	- you can change the resolution under "system" tab and set resolution.	
- 
-//In the Raspberry pi command prompt, 
+4. In the Raspberry pi command prompt, 
 	type: `sudo apt-get upgrade && sudo apt-get update`
 		if a question appears that is answerable by yes or no, answer: y and enter
-// to check the network connection details e.g. IP address of your rasp pi or the default gateway
+-to check the network connection details e.g. IP address of your rasp pi or the default gateway
 	type: `ifconfig` 
-// to check for your default gateway
+-to check for your default gateway
 	type: `netstat -nr` 
-// type `sudo nano /etc/network/interfaces`
-	`sudo nano /etc/dhcpcd.conf` then press enter
-		when you are in the /etc/dhcpcd.conf environment, type
-	`interface wlan0`
-	`static ip_address=192.168.0.144/24`
-	`static router=192.168.0.1/24`
-	`static domain_name_servers=192.168.0.1 8.8.8.8`
-	(to provide static IP address to your rasppi)
+-to provide static IP address to your rasppi
+	type `sudo nano /etc/network/interfaces`
+		`sudo nano /etc/dhcpcd.conf` then press enter
+			when you are in the /etc/dhcpcd.conf environment, type
+		`interface wlan0`
+		`static ip_address=192.168.0.144/24`
+		`static router=192.168.0.1/24`
+		`static domain_name_servers=192.168.0.1 8.8.8.8`
 	to exit, press `ctrl+X`
-//type `sudo reboot` then after 
-//check for network connection, goto CLI type
+-type `sudo reboot` then after 
+-check for network connection, goto CLI type
 	`ping 8.8.8.8`
-//to change the password of your pi
+-to change the password of your pi
 	type: `passwd` and enter (you can set then whatever you want)
  	(change current password)
 	raspberry (current)
 	usccaraga (new password)
 
-# Step 3: Access Raspberry UI from VNC Viewer---------------------
+# Step 3: Access Raspberry UI from VNC Viewer
 
----Virtual Network Computing (VNC) is a graphical desktop sharing system that uses the Remote Frame Buffer protocol to remotely control another computer.
-*be sure that the raspberry pi and the computer you're using must be connected to the same network.
+--Virtual Network Computing (VNC) is a graphical desktop sharing system that uses the Remote Frame Buffer protocol to remotely control another computer.
+--be sure that the raspberry pi and the computer you're using must be connected to the same network.
 	1. On your laptop feel free to downlod the vnc viewer to this site: https://www.realvnc.com/en/connect/download/viewer/
 	2. Run and open the application.
 	3. Enter the static ip adddress in the search bar and enter.
@@ -239,84 +236,15 @@ $ sudo /etc/init.d/dphys-swapfile start
 
 Finally, you have successfully installed opencv 3 and python on your raspberry pi.
 
-# Step 5 - BUILDING A FACE RECOGNITION DATASET
 
-	_This is a preparatory step before training your raspberry pi to detect and recognize individual faces.
-	Here, a dataset of faces of oneself is gathered in order for the raspberry pi to compare the actual live face from the gathered dataset of faces for recognition. The raspberry pi camera is used to capture faces of oneself. These images are then collected and compiled in one folder._
-	The following are the steps on how to build a face recognition dataset:
-	1. Enter the raspberry pi command prompt environmet
-	2. Type: `pip install --upgrade imutils`
-	   *it should look like these:*
-			```bash
-			$ pip install --upgrade imutils 
-			```
-		Note:  Be sure that the OpenCV is installed
-	3. In the raspberry pi terminal, type: `mkdir dataset`
-	   *this makes a directory for the dataset*
-	4. Type: `mkdir dataset/<name of the person's face>`
-	   *this command names a subdirectory under dataset directory which all of the images/faces were contained.*
-		ex: 
-		```bash
-		$ mkdir dataset/john
-		```
-	5. Open the `build_face_dataset.py` from the repository
-	   *To understand further eachline of code in this program, visit in this* [link](https://www.pyimagesearch.com/2018/06/11/how-to-build-a-custom-face-recognition-dataset/)
-		*Note: Some codes are removed and changed.*
-	6. Execute the following in the raspberry pi command prompt:
-		```bash
-		$ python build_face_dataset.py --cascade haarcascade_frontalface_default.xml \
-		    --output dataset/adrian
-		    ```
-	   *After clicking enter, the following shows up:*
-		`[INFO] starting video stream...`
-		`[INFO] 6 face images stored`
-		`[INFO] cleaning up...`
-		
-# Step 6 - Face Recognition
-	*This the part where the raspberry pi is trained to detect and recognize faces. Deep neural network is used to compute a 128-d vector (i.e. a list of 128 floating point values) to quantify each face in the dataset.
-		Note: Make sure that OpenCV is installed and you have gathered dataset of faces.*
 
-	The following are the steps to configure your raspberry pi for face recognition:
-	1. In the raspberry pi command prompt, install dlib toolkit by typing: 
-		`workon <your env name> # optional`
-		`pip install dlib`
-	  *it should look like this:*
-		```bash
-		$ workon <your env name> # optional
-		$ pip install dlib
-		```
-	then press enter
-	2. Install `face_recognition module` by typing:
-		`workon <your env name> # optional`
-		`pip install face_recognition`
-	  *it should look like this:*
-	    ```bash
-		  $ workon <your env name> # optional
-		  $ pip install face_recognition
-		  ```
-	then press enter
-	3. Install `imutils package` by typing:
-		`workon <your env name> # optional`
-		`pip install imutils`
-	  *it should look like this:*
-	  	```bash
-		$ workon <your env name> # optional
-		$ pip install imutils
-		```
-	then press enter
-	4. Open up `encode_faces.py`
-	  *to understand further the lines of codes, refer to the following* [link](https://www.pyimagesearch.com/2018/06/25/raspberry-pi-face-recognition/)
-	5. Open `pi_face_recognition.py`
-	  *to understand further the lines of codes, refer to the following* [link](https://www.pyimagesearch.com/2018/06/25/raspberry-pi-face-recognition/)
-	6. Open up raspberry Pi terminal and execute/type the following:
-		`python pi_face_recognition.py --cascade haarcascade_frontalface_default.xml \
-	--encodings encodings.pickle`
-	  *it should look like this:
-	  	```bash
-		$ python pi_face_recognition.py --cascade haarcascade_frontalface_default.xml \
-			--encodings encodings.pickle
-		[INFO] loading encodings + face detector...
-		[INFO] starting video stream...
-		[INFO] elasped time: 20.78
-		[INFO] approx. FPS: 1.21
-		```
+
+
+
+
+
+
+
+
+
+
