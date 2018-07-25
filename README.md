@@ -78,7 +78,7 @@ In this project we have the following configuration:
 
 ""that's it..welcome to the raspberry pi user interface!
 
-Step 4
+# Step 4
 
 INSTALLING OPENCV 3.3.0 AND PYTHON 3 ON RASPBERRY PI 3
 
