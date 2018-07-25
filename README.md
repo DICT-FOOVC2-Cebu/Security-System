@@ -297,9 +297,9 @@ $ python build_face_dataset.py --cascade haarcascade_frontalface_default.xml \
     --output dataset/adrian
 ```
 ###### After clicking enter, the following shows up:
-`[INFO] starting video stream...`
-`[INFO] 6 face images stored`
-`[INFO] cleaning up...`
+`[INFO] starting video stream...
+[INFO] 6 face images stored
+[INFO] cleaning up...`
 		
 # Step 6 - Face Recognition
 *This the part where the raspberry pi is trained to detect and recognize faces. Deep neural network is used to compute a 128-d vector (i.e. a list of 128 floating point values) to quantify each face in the dataset.
