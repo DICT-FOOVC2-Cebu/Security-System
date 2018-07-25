@@ -349,3 +349,22 @@ Finally, you have successfully installed opencv 3 and python on your raspberry p
 		[INFO] elasped time: 20.78
 		[INFO] approx. FPS: 1.21
 		```
+# Common Errors that can be encountered:
+
+Error retrieving accessibility bus address
+You need to do additional installations:
+```
+$ sudo apt-get install at-spi2-core
+```
+OpenCV Error Assertion Failed
+Use the command:
+```
+$ sudo modprobe bcm2835-v4l2
+```
+And also make sure the path of your haarcascade i.e. face_cascade = cv2.CascadeClassifier('/home/pi/opencv-3.3.0/data/haarcascades/haarcascade_frontalface_default.xml') is correct because it could also cause the error above.
+
+face_recognition module installation error
+Just keep on running the command below until it no longer gives you error and the installation is finally complete.
+```
+$ pip install face_recognition
+```
