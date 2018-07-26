@@ -101,7 +101,8 @@ ip address: 192.168.0.110
 ### Here is how to Connect the Raspberry pi GPIO Extension and the door sensor.
 ![connecting door magnetic sensor](https://github.com/DICT-FOOVC2-Cebu/Security-System/blob/master/Security%20system%20physical%20connection/SCHEMATIC%20RASPBERRY%20PI.png)
 ![connecting gpio cable](https://github.com/DICT-FOOVC2-Cebu/Security-System/blob/master/Security%20system%20physical%20connection/gpio%20expansion%2040%20pins.jpg)
-
+### please check carefully your connection.
+ 
 # Step 4
 
 INSTALLING OPENCV 3.3.0 AND PYTHON 3 ON RASPBERRY PI 3
