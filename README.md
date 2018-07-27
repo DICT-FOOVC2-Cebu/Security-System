@@ -1,4 +1,4 @@
-# STEP 1 - Installing Rasbian OS
+# STEP 1 - Installing Raspbian OS
 ```
 Requirements:	
 At least 16 GB sd card
@@ -101,7 +101,7 @@ ip address: 192.168.0.110
 ### Here is how to Connect the Raspberry pi GPIO Extension and the door sensor.
 ![connecting door magnetic sensor](https://github.com/DICT-FOOVC2-Cebu/Security-System/blob/master/Security%20system%20physical%20connection/SCHEMATIC%20RASPBERRY%20PI.png)
 ![connecting gpio cable](https://github.com/DICT-FOOVC2-Cebu/Security-System/blob/master/Security%20system%20physical%20connection/gpio%20expansion%2040%20pins.jpg)
-### please check carefully your connection.
+### Please check carefully, any misleading connection will cause a serious damage to the Raspberry Pi Components which is possibly irreversible!
  
 # Step 4
 
