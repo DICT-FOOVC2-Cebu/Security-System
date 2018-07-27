@@ -109,13 +109,13 @@ INSTALLING OPENCV 3.3.0 AND PYTHON 3 ON RASPBERRY PI 3
 
 1. The first thing you should do is expand your filesystem to include all available space on your micro-SD card:
 ```
-`$ sudo raspi-config`
-```
+$ sudo raspi-config
+
 2. Select the advanced options then select expand file system and then select the Finish Button!
-```
+
 3. Next is enable your camera.
 ```
-`$ sudo raspi-config`
+$ sudo raspi-config
 ```
 4. Select the Localisation Options and then select camera and enable then select finish button!
 ```
