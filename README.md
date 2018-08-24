@@ -377,6 +377,74 @@ $ python pi_face_recognition.py --cascade haarcascade_frontalface_default.xml \
 [INFO] approx. FPS: 1.21
 ```
 
+# Step 7: INSTALLING XAMMP
+1: Open the XAMPP website. Go to https://www.apachefriends.org/index.html in your computer's web browser.
+
+2: Click XAMPP for Windows. It's a grey button near the bottom of the page.
+
+3: Double-click the downloaded file. This file should be named something like `xampp-win32-7.2.4-0-VC15-installer`, and you'll find it in the default downloads location (e.g., the "Downloads" folder or the desktop).
+
+4: Click Yes when prompted. This will open the XAMPP setup window.
+You may have to click OK on a warning if you have User Account Control (UAC) activated on your computer.
+
+6: Click Next. It's at the bottom of the setup window.
+
+7: Select aspects of XAMPP to install. Review the list of XAMPP attributes on the left side of the window; if you see an attribute that you don't want to install as part of XAMPP, uncheck its box.
+
+8: Click Next. It's at the bottom of the window.
+
+9: Select an installation location. Click the folder-shaped icon to the right of the current installation destination, then click a folder on your computer.
+
+10: Click OK. Doing so confirms your selected folder as your XAMPP installation location.
+
+11: Uncheck the "Learn more about Bitnami" box, then click Next. The "Learn more about Bitnami" box is in the middle of the page.
+
+12: Begin installing XAMPP. Click Next at the bottom of the window to do so. XAMPP will begin installing its files into the folder that you selected.
+
+
+# Step 8: USING XAMPP
+1: Click the xampp application.
+
+2: Click Start of the Apache and MySql.
+
+Note: Don't close the xampp application.
+	
+
+ACCESSING LOCALHOST TO A WEB BROWSER
+Step 1: Go to your web browser and go to `192.168.0.114/security_system/login.php`
+
+Note: We create default password for admin.
+
+	Username: admin
+
+	Password: admin
+
+Step 2: To check/edit the database just go to 192.168.0.114/phpmyadmin
+
+Note: 
+
+      Username: root
+
+      Password: usccaraga
+
+# Step 9: Sending files to VNC Server
+
+1. Click the VNC Viewer File Transfer toolbar button. The File Transfer dialog opens:
+
+2. Click the Send files button. The Send Files dialog opens.
+
+3. Select a file or folder. To select multiple files and/or folders, hold down the SHIFT key.
+
+	Under Windows, you cannot directly select a folder. Instead, double-click to open that folder, then click Use Entire Folder. To select multiple folders, open the parent folder and click Use Entire Folder. Note this means other files and folders in the parent folder will also be transferred.
+
+
+4. Click Open (OK under Linux). The File Transfer dialog opens on the VNC Server computer:
+
+	The most recent file transfer operation is highlighted. You can check its status, or pause or stop the transfer if it takes more than a few seconds.
+
+	By default, files are downloaded to the desktop (Downloads folder under macOS). To change this for future file transfer operations, select an option from the Fetch files to dropdown at the bottom of the File Transfer dialog. Note you must have write permissions for the folder you choose. Alternatively, you can ask to be prompted each time.
+
+
 # Common Errors that can be encountered:
 
 Error retrieving accessibility bus address
